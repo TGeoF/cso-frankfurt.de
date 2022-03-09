@@ -1,12 +1,29 @@
 ---
 import IndexLayout from '../layouts/IndexLayout.astro'
  
+import Button from '../components/Button.astro'
 import ImageLeft from '../components/ImageLeft.astro'
 import ImageRight from '../components/ImageRight.astro'
 ---
 
+<style lang="scss">
+
+.lead {
+  font-size: 1.563rem; 
+  padding-bottom: 1em;
+}
+
+</style>
+
 <IndexLayout>
+  <div class="lead">
+    <p>Das CSO spielt Clara Schumann: Konzerte am 19. und 20. 
+    März in Frankfurt bei freiem Eintritt.<br/>
+    <Button href="konzerte">Mehr zu den Konzerten erfahren</Button></p>
+  </div>
   <ImageLeft src="images/image003.jpg" alt="">
-    I'm pretty sure that's what he was doing. He was not asking how to add a code block, he was asking how to format text within the code block (in this case, how to fdfdmake code bold). See accepted answer for the proper way to do it.
+    Das Clara Schumann Orchester spielt unter der Leitung von Lukas Rommelspacher.
+    Seit 2020 treffen hier engagierte Musiker_innen aufeinander und erarbeiten
+    Sinfoniekonzerte.<br/><Button href="/orchester">Mehr zum Orchester erfahren</Button>
   </ImageLeft>
 </IndexLayout>

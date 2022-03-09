@@ -1,0 +1,24 @@
+---
+const { href } = Astro.props
+---
+
+<style>
+
+.button {
+  background-color: #a22066;
+  
+  border-radius: 100vh;
+  color: white;
+  padding: .3em .6em;
+  font-size: .8em;
+}
+
+.button:link { text-decoration: none; }
+.button:visited { text-decoration: none; }
+.button:hover { text-decoration: none; }
+.button:active { text-decoration: none; }
+
+</style>
+
+<a class="button" href={href}><slot/></a>
+
