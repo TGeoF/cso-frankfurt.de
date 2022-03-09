@@ -1,0 +1,35 @@
+<style>
+
+.wordmark {
+  margin-top: 50px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  grid-column: 2;
+  font-family: "MadrasExtraLight";
+  font-size: clamp(4rem, 3vw + 3rem, 5rem);
+  text-transform: uppercase;
+}
+
+.wordmark a {
+  text-decoration: none;
+  color: black;
+}
+
+@media screen and (max-width: 708px) {
+  .wordmark {
+    font-size: 6vw;
+    font-weight: 600;
+    /* grid-column: 1 / span 2; */
+    padding: 0 1rem;
+    margin: 50px auto 0;
+  }
+}
+
+</style>
+
+<div class="wordmark">
+  <a href="/">
+    Clara Schumann Orchester<br />
+    Frankfurt a.M.
+  </a>
+</div>

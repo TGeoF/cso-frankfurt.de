@@ -1,0 +1,17 @@
+<style>
+div {
+  display: grid;
+  grid-template-columns: calc(var(--logo-height) * 1.5) auto;
+}
+
+@media screen and (max-width: 708px) {
+  div > * {
+    margin-top: 20px;
+  }
+}
+
+</style>
+
+<div>
+  <slot />
+</div>

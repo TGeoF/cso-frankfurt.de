@@ -1,0 +1,54 @@
+---
+// nothing
+---
+
+<style>
+
+.logo {
+  margin-top: 50px;
+  grid-row: 1 / span 2;
+  height: var(--logo-height);
+  padding-left: calc(var(--logo-height) / 4);
+}
+
+.logo > * {
+  display: inline-block;
+  box-shadow: 0 0 2px grey;
+}
+
+.logo-c {
+  height: calc(var(--logo-height) / 2);
+  width: calc(var(--logo-height) / 4);
+  background-color: #e71f77;
+  border-top-left-radius: calc(var(--logo-height) / 4);
+  border-bottom-left-radius: calc(var(--logo-height) / 4);
+}
+
+.logo-s1 {
+  height: calc(var(--logo-height) / 2);
+  width: calc(var(--logo-height) / 4);
+  background-color: #d80854;
+  border-radius: 125px 0 0 125px;
+}
+
+.logo-s2 {
+  height: calc(var(--logo-height) / 2);
+  width: calc(var(--logo-height) / 4);
+  background-color: #d80854;
+  border-radius: 0 125px 125px 0;
+  transform: translate(0, 100%);
+}
+
+.logo-o {
+  height: calc(var(--logo-height) / 2);
+  width: calc(var(--logo-height) / 2);
+  background-color: #a22066;
+  border-radius: 50%;
+  transform: translate(-50%, 0);
+}
+
+</style>
+
+<div class="logo">
+			<div class="logo-c"></div><div class="logo-s1"></div><div class="logo-s2"></div><div class="logo-o"></div>
+</div>
