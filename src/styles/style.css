@@ -75,7 +75,7 @@ select {
     url("/fonts/MadrasExtraLight.ttf.eot?#iefix") format("embedded-opentype");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  /* font-display: swap; */
 }
 
 h1,
