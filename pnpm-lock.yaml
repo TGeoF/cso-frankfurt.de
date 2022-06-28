@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
   astro: ^0.23.7
@@ -95,13 +95,13 @@ packages:
       - '@babel/core'
     dev: true
 
-  /@astrojs/renderer-svelte/0.5.1_faebd111799c72f3d2aad020d40b7dae:
+  /@astrojs/renderer-svelte/0.5.1_7lv5celztrzphuvk2aqnic35vy:
     resolution: {integrity: sha512-/k5D0fJkZqQQHvBQ3qAtaPZqdi55SwLdSUJtjb3J9P7WSMwaEv1kWKjy+S7pnKHsty+Vgsn20MgLK2JUgv0dOA==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.39_svelte@3.46.4+vite@2.8.6
       svelte: 3.46.4
-      svelte-preprocess: 4.10.4_7daa3f6906525bbd396d9a4feef7708c
+      svelte-preprocess: 4.10.4_pwvd62igkjn32olntjh6553qrq
     transitivePeerDependencies:
       - '@babel/core'
       - coffeescript
@@ -304,6 +304,8 @@ packages:
     resolution: {integrity: sha512-7yJPvPV+ESz2IUTPbOL+YkIGyCqOyNIzdguKQuJGnH7bg1WTIifuM21YqokFt/THWh1AkCRn9IgoykTRCBVpzA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.17.0
     dev: true
 
   /@babel/plugin-syntax-jsx/7.16.7_@babel+core@7.17.5:
@@ -744,7 +746,7 @@ packages:
       '@astrojs/prism': 0.4.0
       '@astrojs/renderer-preact': 0.5.0_@babel+core@7.17.5
       '@astrojs/renderer-react': 0.5.0_@babel+core@7.17.5
-      '@astrojs/renderer-svelte': 0.5.1_faebd111799c72f3d2aad020d40b7dae
+      '@astrojs/renderer-svelte': 0.5.1_7lv5celztrzphuvk2aqnic35vy
       '@astrojs/renderer-vue': 0.4.0_vite@2.8.6
       '@astropub/webapi': 0.10.14
       '@babel/core': 7.17.5
@@ -950,6 +952,11 @@ packages:
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.0.0
     dev: true
@@ -3039,6 +3046,8 @@ packages:
       on-finished: 2.3.0
       range-parser: 1.2.1
       statuses: 1.5.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /serialize-javascript/6.0.0:
@@ -3218,7 +3227,7 @@ packages:
       svelte: 3.46.4
     dev: true
 
-  /svelte-preprocess/4.10.4_7daa3f6906525bbd396d9a4feef7708c:
+  /svelte-preprocess/4.10.4_pwvd62igkjn32olntjh6553qrq:
     resolution: {integrity: sha512-fuwol0N4UoHsNQolLFbMqWivqcJ9N0vfWO9IuPAiX/5okfoGXURyJ6nECbuEIv0nU3M8Xe2I1ONNje2buk7l6A==}
     engines: {node: '>= 9.11.2'}
     requiresBuild: true
