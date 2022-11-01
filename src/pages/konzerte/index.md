@@ -2,7 +2,7 @@
 layout: '../../layouts/IndexLayout.astro'
 ---
 
-# Nächste Konzerte
+# Nächstes Konzert
 
 Sonntag, **13.11.2022**, 17:00 Uhr
 
