@@ -17,7 +17,7 @@ sondern auch die erste Klavierpädagogin am Frankfurter Konservatorium war.
 Seit 2021 sind wir außerdem ein eingetragener Verein und möchten daher
 umso mehr mit Schwung nach der langen Pause in eine neue Phase starten.
 Das Clara-Schumann-Orchester arbeitet aktuell mit Hochdruck an seinem vierten 
-[Projekt](/konzerte).
+[Projekt](/konzerte/).
 
 ## Lukas Rommelspacher
 
