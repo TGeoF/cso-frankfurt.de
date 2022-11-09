@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /fonts/
 Disallow: /images/
+Sitemap: https://www.cso-frankfurt.de/sitemap-index.xml
