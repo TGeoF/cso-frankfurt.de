@@ -1,5 +1,5 @@
 ---
-layout: '../layouts/IndexLayout.astro'
+layout: '../layouts/InfoLayout.astro'
 ---
 
 ## Das Clara-Schumann-Orchester
