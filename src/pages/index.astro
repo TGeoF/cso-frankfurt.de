@@ -1,28 +1,34 @@
 ---
-import IndexLayout from '../layouts/IndexLayout.astro'
- 
-import Button from '../components/Button.astro'
-import ImageLeft from '../components/ImageLeft.astro'
-import ImageRight from '../components/ImageRight.astro'
+import IndexLayout from "../layouts/IndexLayout.astro";
+
+import Button from "../components/Button.astro";
+import ImageLeft from "../components/ImageLeft.astro";
+import ImageRight from "../components/ImageRight.astro";
 ---
 
 <style lang="scss">
-
-.lead {
-  font-size: 1.563rem; 
-  padding-bottom: 1em;
-}
-
+	.lead {
+		font-size: 1.563rem;
+		padding-bottom: 1em;
+	}
 </style>
 
 <IndexLayout title="CSO">
-  <div class="lead">
-    <p>Am 13. November spielen wir Schostakowitsch bei freiem Eintritt in Frankfurt<br/>
-    <Button href="konzerte/">Mehr zum Konzert erfahren</Button></p>
-  </div>
-  <ImageLeft src="/images/image003_650.jpg" alt="Das  CSO spielt auf der Bühne des Großen Saals der HfMDK Frankfurt">
-    Das Clara-Schumann-Orchester spielt unter der Leitung von Lukas Rommelspacher.
-    Seit 2020 treffen hier engagierte Musiker_innen aufeinander und erarbeiten
-    Sinfoniekonzerte.<br/><Button href="orchester/">Mehr zum Orchester erfahren</Button>
-  </ImageLeft>
+	<div class="lead">
+		<p>
+			<em>CSO meets Eliot-Quartett</em> am 4. und 5. März bei freiem Eintritt in
+			Frankfurt<br />
+			<Button href="konzerte/">Mehr zum Konzert erfahren</Button>
+		</p>
+	</div>
+	<ImageLeft
+		src="/images/image003_650.jpg"
+		alt="Das  CSO spielt auf der Bühne des Großen Saals der HfMDK Frankfurt"
+	>
+		Das Clara-Schumann-Orchester spielt unter der Leitung von Lukas
+		Rommelspacher. Seit 2020 treffen hier engagierte Musiker_innen aufeinander
+		und erarbeiten Sinfoniekonzerte.<br /><Button href="orchester/"
+			>Mehr zum Orchester erfahren</Button
+		>
+	</ImageLeft>
 </IndexLayout>
