@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
+    "module": "esnext",
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
