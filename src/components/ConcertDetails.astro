@@ -1,11 +1,11 @@
 ---
 import ConcertText from "@components/ConcertText.astro";
 
-import Konzert from "@lib/konzert";
+import  { TypeKonzertFields } from "@lib/types";
 import ImageAndTextColumns from "./ImageAndTextColumns.astro";
 
 interface Props {
-  konzert: Konzert;
+  konzert: TypeKonzertFields;
 	imageSide?: "left" | "right";
 }
 

@@ -5,14 +5,16 @@ import ConcertDetails from "@components/ConcertDetails.astro";
 
 import { contentfulClient } from "@lib/contentful";
 
-import Konzert from "@lib/konzert";
+import Contentful from "contentful";
 
-const entries = await contentfulClient.getEntries<Konzert>({
+import { TypeKonzertFields } from "@lib/types";
+
+const entries: Contentful.EntryCollection<TypeKonzertFields> = await contentfulClient.getEntries<TypeKonzertFields>({
   content_type: "konzert",
 });
 
-const kommendeKonzerte = Array<Konzert>();
-const vergangeneKonzerte = Array<Konzert>();
+const kommendeKonzerte = Array<TypeKonzertFields>();
+const vergangeneKonzerte = Array<TypeKonzertFields>();
 
 for (const item of entries.items) {
   const datum = new Date(item.fields.datumUhrzeit1);
