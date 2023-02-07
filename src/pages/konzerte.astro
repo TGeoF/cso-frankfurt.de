@@ -9,12 +9,13 @@ import Contentful from "contentful";
 
 import { TypeKonzertFields } from "@lib/types";
 
-const entries: Contentful.EntryCollection<TypeKonzertFields> = await contentfulClient.getEntries<TypeKonzertFields>({
-  content_type: "konzert",
-});
+const entries: Contentful.EntryCollection<TypeKonzertFields> =
+  await contentfulClient.getEntries<TypeKonzertFields>({
+    content_type: "konzert",
+  });
 
-const kommendeKonzerte = Array<TypeKonzertFields>();
-const vergangeneKonzerte = Array<TypeKonzertFields>();
+const kommendeKonzerte: TypeKonzertFields[] = [];
+const vergangeneKonzerte: TypeKonzertFields[] = [];
 
 for (const item of entries.items) {
   const datum = new Date(item.fields.datumUhrzeit1);
@@ -29,7 +30,15 @@ for (const item of entries.items) {
 
 <IndexLayout title="Konzerte">
   <h2>Nächste Konzerte</h2>
-  {kommendeKonzerte.map((konzert) => <ConcertDetails konzert={konzert} />)}
+  {
+    kommendeKonzerte
+      .sort(
+        (a, b) =>
+          new Date(a.datumUhrzeit1).getTime() -
+          new Date(b.datumUhrzeit1).getTime()
+      )
+      .map((konzert) => <ConcertDetails konzert={konzert} />)
+  }
   <h2 id="vergangene-konzerte">Vergangene Konzerte</h2>
   {
     vergangeneKonzerte
