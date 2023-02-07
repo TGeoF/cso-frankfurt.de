@@ -2,69 +2,74 @@
 const image = Astro.props;
 
 export interface Props {
-  src: string;
-  alt: string;
-  imageSide: "left" | "right";
+	src: string;
+	alt: string;
+	imageSide: "left" | "right";
 }
 ---
 
-<style>
-  .image {
-    border-radius: 10px;
-    box-shadow: 0 0 5px 2px lightgrey;
-    max-height: 650px;
-  }
-
-  .wrapper {
-    display: flex;
-    align-items: center;
-    margin-top: 2rem;
-  }
-
-  .image-wrapper {
-    display: block;
-    margin: auto;
-    width: fit-content;
-    max-width: 50%;
-  }
-
-  .text {
-    padding: 1rem;
-    width: fit-content;
-    max-width: 50%;
-  }
-
-  @media screen and (max-width: 1100px) {
-    .wrapper {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .text {
-      padding: 0;
-    }
-  }
-</style>
-
 <div class="wrapper">
-  {
-    Astro.props.imageSide === "right" && (
-      <div class="text">
-        <p>
-          <slot />
-        </p>
-      </div>
-    )
-  }
-  <div class="image-wrapper">
-    <img class="image" src={image.src} alt={image.alt} />
-  </div>
-  {
-    Astro.props.imageSide === "left" && (
-      <div class="text">
-        <p>
-          <slot />
-        </p>
-      </div>
-    )
-  }
+	{
+		Astro.props.imageSide === "right" && (
+			<div class="text">
+				<p>
+					<slot />
+				</p>
+			</div>
+		)
+	}
+	<div class="image-wrapper">
+		<img class="image" src={image.src} alt={image.alt} />
+	</div>
+	{
+		Astro.props.imageSide === "left" && (
+			<div class="text">
+				<p>
+					<slot />
+				</p>
+			</div>
+		)
+	}
 </div>
+
+<style>
+	.image {
+		border-radius: 10px;
+		box-shadow: 0 0 5px 2px lightgrey;
+		max-height: 650px;
+	}
+
+	.wrapper {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		margin-top: 2rem;
+	}
+
+	.image-wrapper {
+		display: block;
+		margin: auto;
+		width: fit-content;
+		max-width: 50%;
+	}
+
+	.text {
+		margin-block: 1rem;
+		width: fit-content;
+		max-width: 50%;
+	}
+
+	@media screen and (max-width: 1100px) {
+		.wrapper {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		.image-wrapper {
+			max-width: 100%;
+		}
+		.text {
+			margin: 0;
+			max-width: 100%;
+		}
+	}
+</style>

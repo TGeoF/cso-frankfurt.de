@@ -1,17 +1,16 @@
 <div class="grid-container">
-  <slot />
+	<slot />
 </div>
 
 <style>
-  .grid-container {
-    display: grid;
-    grid-template-columns: calc(var(--logo-height) * 1.5) auto;
-  }
-  
-  @media screen and (max-width: 708px) {
-    .grid-container > * {
-      margin-top: 20px;
-    }
-  }
-  
-  </style>
+	.grid-container {
+		display: grid;
+		grid-template-columns: calc(var(--logo-height) * 1.5) auto;
+	}
+	
+	@media screen and (max-width: 708px) {
+		.grid-container > * {
+			margin-top: 20px;
+		}
+	}
+</style>
