@@ -1,0 +1,15 @@
+---
+import wochentag from "@lib/wochentag";
+
+interface Props {
+  datumUndUhrzeit: string;
+}
+
+const datumUndUhrzeit = new Date(Astro.props.datumUndUhrzeit);
+---
+
+<span
+  >{wochentag(datumUndUhrzeit.getDay())}, {
+    datumUndUhrzeit.toLocaleDateString("de")
+  }, {datumUndUhrzeit.toLocaleTimeString("de", { timeStyle: "short" })} Uhr
+</span>

@@ -1,0 +1,54 @@
+---
+import IndexLayout from "@layouts/IndexLayout.astro";
+
+import ConcertDetails from "@components/ConcertDetails.astro";
+import ImageAndTextColumns from "@components/ImageAndTextColumns.astro";
+
+import { contentfulClient } from "@lib/contentful";
+
+import Konzert from "@lib/konzert";
+
+const entries = await contentfulClient.getEntries<Konzert>({
+  content_type: "konzert",
+});
+
+const kommendeKonzerte = Array<Konzert>();
+const vergangeneKonzerte = Array<Konzert>();
+
+for (const item of entries.items) {
+  const datum = new Date(item.fields.datumUhrzeit1);
+  const datum2 = new Date(item.fields.datumUhrzeit2);
+  if (datum > new Date() || datum2 > new Date()) {
+    kommendeKonzerte.push(item.fields);
+  } else {
+    vergangeneKonzerte.push(item.fields);
+  }
+}
+---
+
+<IndexLayout title="Konzerte">
+  <h2>Nächste Konzerte</h2>
+  {kommendeKonzerte.map((konzert) => <ConcertDetails konzert={konzert} />)}
+  <h2 id="vergangene-konzerte">Vergangene Konzerte</h2>
+  {
+    vergangeneKonzerte
+      .sort(
+        (a, b) =>
+          new Date(b.datumUhrzeit1).getTime() -
+          new Date(a.datumUhrzeit1).getTime()
+      )
+      .map((konzert, i) =>
+        i % 2 === 1 ? (
+          <ConcertDetails konzert={konzert} imageSide="left" />
+        ) : (
+          <ConcertDetails konzert={konzert} imageSide="right" />
+        )
+      )
+  }
+</IndexLayout>
+
+<style>
+  #vergangene-konzerte {
+    margin-top: 2em;
+  }
+</style>

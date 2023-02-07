@@ -1,0 +1,27 @@
+---
+import ConcertText from "@components/ConcertText.astro";
+
+import Konzert from "@lib/konzert";
+import ImageAndTextColumns from "./ImageAndTextColumns.astro";
+
+interface Props {
+  konzert: Konzert;
+	imageSide?: "left" | "right";
+}
+
+const { konzert, imageSide } = Astro.props as Props;
+---
+
+{
+  konzert.flyer ? (
+    <ImageAndTextColumns
+      src={konzert.flyer.fields.file.url}
+      alt="Konzertflyer des CSO Frankfurt"
+      imageSide={imageSide ? imageSide : "right"}
+    >
+      <ConcertText konzert={konzert} />
+    </ImageAndTextColumns>
+  ) : (
+    <ConcertText konzert={konzert} />
+  )
+}
