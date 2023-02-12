@@ -11,5 +11,5 @@ const datumUndUhrzeit = new Date(Astro.props.datumUndUhrzeit);
 <span
   >{wochentag(datumUndUhrzeit.getDay())}, {
     datumUndUhrzeit.toLocaleDateString("de")
-  }, {datumUndUhrzeit.toLocaleTimeString("de", { timeStyle: "short" })} Uhr
+  }, {datumUndUhrzeit.toLocaleTimeString("de", { timeStyle: "short", timeZone: 'Europe/Berlin' })} Uhr
 </span>
