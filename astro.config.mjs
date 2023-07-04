@@ -3,7 +3,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://cso-frankfurt.de/",
+  site: "https://www.cso-frankfurt.de/",
   // trailingSlash: 'always',
   integrations: [sitemap()]
 });
