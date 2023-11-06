@@ -70,8 +70,10 @@ select {
 
 @font-face {
   font-family: "MadrasExtraLight";
-  src: url("/fonts/MadrasExtraLight.ttf.woff") format("woff"),
-    url("/fonts/MadrasExtraLight.ttf.svg#MadrasExtraLight") format("svg"), url("/fonts/MadrasExtraLight.ttf.eot"),
+  src:
+    url("/fonts/MadrasExtraLight.ttf.woff") format("woff"),
+    url("/fonts/MadrasExtraLight.ttf.svg#MadrasExtraLight") format("svg"),
+    url("/fonts/MadrasExtraLight.ttf.eot"),
     url("/fonts/MadrasExtraLight.ttf.eot?#iefix") format("embedded-opentype");
   font-weight: normal;
   font-style: normal;
