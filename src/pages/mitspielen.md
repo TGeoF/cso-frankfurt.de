@@ -35,6 +35,6 @@ September
 
 R. Wagner: Vorspiel zu Tristan und Isolde<br>
 Fazil Say: Violinkonzert 1001 Nacht<br>
-R. Korsakow: Scherazade
+R. Korsakow: Scheherazade
 
-[Anmelden bis zum 1.9.24](https://forms.gle/3Biu5KHPLtcPQV2UA)
+[Anmelden bis zum 1.9.24](https://forms.gle/Cw8JfSLaxedQYrQF9)
