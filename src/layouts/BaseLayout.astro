@@ -1,37 +1,39 @@
 ---
-import Meta from '../components/Meta.astro'
+import Meta from "../components/Meta.astro";
 
-import Grid from '../components/Grid.astro'
+import Grid from "../components/Grid.astro";
 
-import ContentArea from '../components/ContentArea.astro'
-// import Footer from '../components/Footer.astro'
-import Logo from '../components/Logo.astro'
-import Navbar from '../components/Navbar.astro'
-import Wordmark from '../components/Wordmark.astro'
+import ContentArea from "../components/ContentArea.astro";
+import Footer from "../components/Footer.astro";
+import Logo from "../components/Logo.astro";
+import Navbar from "../components/Navbar.astro";
+import Wordmark from "../components/Wordmark.astro";
 ---
 
 <html lang="de">
-<head>
-  <Meta />
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<style is:global>
-		@import "../styles/style.css";
-		@import "../styles/fontawesome.css";
-	</style>
-	<title>{Astro.props.title} | Clara-Schumann-Orchester Frankfurt am Main</title>
-</head>
-<body>
-	<Grid>
-		<Logo />
-		<Wordmark />
-		<Navbar />
-		<ContentArea>
-			<slot />
-		</ContentArea>
-		<!-- <Footer /> -->
-	</Grid>
-</body>
+	<head>
+		<Meta />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<style is:global>
+			@import "../styles/style.css";
+			@import "../styles/fontawesome.css";
+		</style>
+		<title>
+			{Astro.props.title} | Clara-Schumann-Orchester Frankfurt am Main
+		</title>
+	</head>
+	<body>
+		<Grid>
+			<Logo />
+			<Wordmark />
+			<Navbar />
+			<ContentArea>
+				<slot />
+			</ContentArea>
+			<Footer />
+		</Grid>
+	</body>
 </html>

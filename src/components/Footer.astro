@@ -1,11 +1,64 @@
-<footer>Footer</footer>
+<footer>
+	<nav>
+		<ul>
+			<li>
+				<a
+					class="navlink-socialmedia"
+					target="_blank"
+					aria-label="Instagram"
+					href="https://www.instagram.com/claraschumannorchester/"
+					><i class="fab fa-instagram"></i></a
+				>
+			</li>
+			<li>
+				<a
+					class="navlink-socialmedia"
+					target="_blank"
+					aria-label="Facebook"
+					href="https://www.facebook.com/Clara-Schumann-Orchester-Frankfurt-100707598086412/"
+					><i class="fab fa-facebook"></i></a
+				>
+			</li>
+			<li><a href="/konzerte">Konzerte</a></li>
+			<li><a href="/orchester">Über uns</a></li>
+			<li><a href="/leitung">Leitung</a></li>
+			<li><a href="/mitspielen">Mitspielen</a></li>
+		</ul>
+	</nav>
+</footer>
 
 <style>
 	footer {
+		background-color: #fef6f9;
 		font-family: sans-serif;
 		line-height: 2;
 		grid-column: 1 / span 2;
 		text-align: center;
 		color: gray;
+	}
+
+	nav ul {
+		list-style-type: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		width: auto;
+	}
+
+	nav ul li {
+		padding: 0 1rem;
+	}
+
+	nav a {
+		font-weight: 700;
+		text-decoration: none;
+		color: gray;
+	}
+
+	@media screen and (max-width: 708px) {
+		footer {
+			display: none;
+		}
 	}
 </style>

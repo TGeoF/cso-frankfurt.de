@@ -1,12 +1,14 @@
 {
-  "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "esnext",
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@lib/*": ["src/lib/*"],
-    }
-  }
+	"compilerOptions": {
+		"moduleResolution": "node",
+		"module": "esnext",
+		"baseUrl": ".",
+		"paths": {
+			"@components/*": ["src/components/*"],
+			"@layouts/*": ["src/layouts/*"],
+			"@lib/*": ["src/lib/*"],
+			"@pages/*": ["src/pages/*"],
+			"@posts/*": ["src/posts/*"]
+		}
+	}
 }

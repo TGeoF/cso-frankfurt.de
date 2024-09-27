@@ -1,0 +1,25 @@
+---
+import Layout from "@layouts/InfoLayout.astro";
+import { Content as TextContent } from "@posts/text_leitung.md";
+import ImageAndTextColumns from "@components/ImageAndTextColumns.astro";
+---
+
+<Layout title="Leitung">
+	<h2>Lukas Rommelspacher</h2>
+	<ImageAndTextColumns
+		src="/images/lr.png"
+		alt="Lukas Rommelspacher dirigiert das CSO."
+		imageSide="left"
+	>
+		<p>
+			Der Dirigent und Pianist Lukas Rommelspacher (*1992) ist seit der
+			Spielzeit 2018/2019 als Solorepetitor an der Oper Frankfurt tätig. Hier
+			gab er im April diesen Jahres mit <em>The Prodigal Son</em> und <em>
+				The Burning Fiery Furnace
+			</em> von Benjamin Britten sein Debut. In der Spielzeit 2023/2024 wird er zwei
+			Vorstellungen der Oper <em>Ascanio in Alba</em> von Wolfgang Amadeus Mozart
+			leiten.
+		</p>
+	</ImageAndTextColumns>
+	<TextContent />
+</Layout>

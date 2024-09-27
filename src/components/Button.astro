@@ -1,25 +1,40 @@
 ---
-const { href } = Astro.props
----
-
-<style>
-
-.button {
-  background-color: #a22066;
-  
-  border-radius: 10px;
-  white-space: nowrap;
-  color: white;
-  padding: .3em .6em;
-  font-size: .8em;
+interface Props {
+	href: string;
+	color?: string | undefined;
 }
 
-.button:link { text-decoration: none; }
-.button:visited { text-decoration: none; }
-.button:hover { text-decoration: none; }
-.button:active { text-decoration: none; }
+let { href, color } = Astro.props;
 
+if (!color) {
+	color = "#a22066";
+}
+---
+
+<style define:vars={{ color }}>
+	.button {
+		background-color: var(--color);
+
+		border-radius: 13px;
+		white-space: nowrap;
+		color: white;
+		padding: 0.3em 0.6em;
+		font-size: 0.8em;
+		margin: 0 0.2rem 0 0;
+	}
+
+	.button:link {
+		text-decoration: none;
+	}
+	.button:visited {
+		text-decoration: none;
+	}
+	.button:hover {
+		text-decoration: none;
+	}
+	.button:active {
+		text-decoration: none;
+	}
 </style>
 
-<a class="button" href={href}><slot/></a>
-
+<a class="button" href={href}><slot /></a>

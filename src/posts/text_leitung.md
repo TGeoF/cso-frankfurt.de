@@ -1,14 +1,3 @@
----
-layout: "../layouts/InfoLayout.astro"
----
-
-## Lukas Rommelspacher
-
-Der Dirigent und Pianist Lukas Rommelspacher (\*1992) ist seit der Spielzeit 2018/2019 als
-Solorepetitor an der Oper Frankfurt tätig. Hier gab er im April diesen Jahres mit _The Prodigal Son_
-und _The Burning Fiery Furnace_ von Benjamin Britten sein Debut. In der Spielzeit 2023/2024 wird er
-zwei Vorstellungen der Oper _Ascanio in Alba_ von Wolfgang Amadeus Mozart leiten.
-
 An der Oper Frankfurt repetierte und assistierte er in den vergangenen fünf Spielzeiten bereits
 zahlreiche Opern und arbeitete mit namhaften Dirigenten wie Sebastian Weigle, Elias Grandy,
 Alexander Soddy oder Silvain Cambreling zusammen. 2023 wurde er zum wiederholten Male als
