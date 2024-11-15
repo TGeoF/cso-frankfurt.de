@@ -4,7 +4,7 @@ layout: "../layouts/InfoLayout.astro"
 
 ## Mitspielen bei kommenden Projekten
 
-Für das Jahr 2024 planen wir bereits vier sehr interessante Projekte.
+Für die Zukunft planen wir bereits interessante neue Projekte.
 Musiker\*innen, die dabei mitspielen möchten, sind herzlich eingeladen, die unten
 stehenden Links zur Anmeldung zu nutzen.
 
