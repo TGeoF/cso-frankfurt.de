@@ -3,62 +3,66 @@ import { marked } from "marked";
 
 import ConcertTime from "@components/ConcertTime.astro";
 
-import Konzert from "@lib/konzert";
+import { Konzert, KonzertFields } from "@lib/types";
 
 const konzert = Astro.props.konzert;
 
 interface Props {
-  konzert: Konzert;
+	konzert: KonzertFields;
 }
+
+console.log("Konzert:", konzert);
 ---
 
 <div>
-  <h3 id="konzert-titel">{konzert.titel}</h3>
-  <p>
-    <ConcertTime datumUndUhrzeit={konzert.datumUhrzeit1} />
-    {
-      konzert.datumUhrzeit2 && (
-        <>
-          <br />
-          <ConcertTime datumUndUhrzeit={konzert.datumUhrzeit2} />
-        </>
-      )
-    }
-  </p>
-  <p>
-    <strong>Programm:</strong>
-    {
-      konzert.programm.map((stueck) => {
-        return (
-          <>
-            <br />
-            <span>{stueck}</span>
-          </>
-        );
-      })
-    }
-  </p>
-  <p>
-    {
-      konzert.solistinnenUndLeitung.map((person) => {
-        return (
-          <>
-            <span set:html={marked.parseInline(person)} />
-            <br />
-          </>
-        );
-      })
-    }
-  </p>
-  <p>
-    <b>Ort:</b><br />
-    {konzert.ort}
-  </p>
-  <p set:html={marked.parseInline(konzert.eintrittspreise)} />
+	<h3 id="konzert-titel">{konzert.titel}</h3>
+	<p>
+		<ConcertTime datumUndUhrzeit={konzert.datumUhrzeit1} />
+		{
+			konzert.datumUhrzeit2 && (
+				<>
+					<br />
+					<ConcertTime datumUndUhrzeit={konzert.datumUhrzeit2} />
+				</>
+			)
+		}
+	</p>
+	{
+		konzert.programm && (
+			<p>
+				<strong>Programm:</strong>
+				{konzert.programm.map((stueck) => {
+					return (
+						<>
+							<br />
+							<span>{stueck}</span>
+						</>
+					);
+				})}
+			</p>
+		)
+	}
+	<p>
+		{
+			konzert.solistinnenUndLeitung.map((person) => {
+				return (
+					<>
+						<span set:html={marked.parseInline(person)} />
+						<br />
+					</>
+				);
+			})
+		}
+	</p>
+	<p>
+		<b>Ort:</b><br />
+		{konzert.ort}
+	</p>
+	<p set:html={marked.parseInline(konzert.eintrittspreise)} />
 </div>
 
 <style>
-  #konzert-titel {
-    margin-top: 1em;
-  }
+	#konzert-titel {
+		margin-top: 1em;
+	}
 </style>
