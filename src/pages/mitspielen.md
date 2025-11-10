@@ -8,26 +8,36 @@ Für die Zukunft planen wir bereits interessante neue Projekte.
 Musiker\*innen, die dabei mitspielen möchten, sind herzlich eingeladen, die unten
 stehenden Links zur Anmeldung zu nutzen.
 
-### Projekt 12 (Jubiläumsprojekt - 5 Jahre CSO) 
+### Projekt 16
 
-2.2. (18:00-20:30) / 9.2 (18:00 - 20:30) / 16.2. (18:00-20:30) / 
-22.2. & 23.2. Probenwochenende (Proben jeweils 10:00 - 18:00) / 
-28.2. Generalprobe (19:00-22:00) / 1. & 2. März Konzerte
+1.2. (18:00 - 20:30) /
+8.2. (18:00 - 20:30) /
+15.2. (18:00 - 20:30) /
+22.2. (18:00 - 20:30) /
+28.2. (10:00 - 18:00) /
+1.3. (10:00 - 18:00) /
+5.3. GP (19:00 - 22:00) (Donnerstag!) /
+6.3. Konzert 1 (19:30) /
+7.3. Konzert 2 (19:30)
 
-Clara Schumann: Charakterstücke op. 5 Nr. 1 & 2 arr. für Orchester
+B. Bartok: Klavierkonzert Nr. 2 /
+J. Sibelius: Sinfonie Nr. 1
 
-L. v. Beethoven: Klavierkonzert Nr. 3
-
-F. Schubert: Große C-Dur Sinfonie
-
-Anmeldungslink: https://forms.gle/SQHwhqczkpioDaR49 (Anmeldeschluss: 1.12.24)
+Anmeldungslink: https://forms.gle/vLMi7HWp2LSkDNnR8 (Anmeldeschluss: 15.12.2025)
 
 ### Projekt 13 (Galaprogramm)
 
-27.4 (16:00 - 20:30) / 4.5. (16:00 - 20:30) / 10. & 11. Mai
-Probenwochenende (Proben jeweils 10:00 - 18:00) / 16. & 17. Mai Konzerte
+25.10. (18:00 - 20:30) /
+1.11. (18:00 - 20:30) /
+8.11. (18:00 - 20:30) /
+14.11. (10:00 - 18:00) /
+15.11. (10:00 - 18:00) /
+20.11. GP (19:00 - 22:00) /
+21.11. Konzert 1 /
+22.11. Konzert 2
 
-Galaprogramm mit Opernarien, Ouvertüren und „Highlightstücken“, Gastspiel mit
-Open-Air-Konzert bei einer Mittelhessischen Konzertreihe
+D. Schostakowitsch: Cello-Konzert Nr. 1 /
+P. Tschaikowski: Sinfonie Nr. 4
 
-Anmeldungslink folgt später
+Anmeldungslink:
+https://forms.gle/jTywHhwWmYbFpDBR7 (Anmeldeschluss: 15.07.2026)
