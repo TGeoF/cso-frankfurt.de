@@ -25,7 +25,7 @@ J. Sibelius: Sinfonie Nr. 1
 
 Anmeldungslink: https://forms.gle/vLMi7HWp2LSkDNnR8 (Anmeldeschluss: 15.12.2025)
 
-### Projekt 13 (Galaprogramm)
+### Projekt 17
 
 25.10. (18:00 - 20:30) /
 1.11. (18:00 - 20:30) /
