@@ -1,0 +1,53 @@
+---
+import InfoLayout from "../layouts/InfoLayout.astro";
+import { contentfulClient } from "@lib/contentful";
+import type { Projekt } from "@lib/types";
+
+import Button from "@components/Button.astro";
+
+let projekte = [];
+
+try {
+	const entries = await contentfulClient.getEntries<Projekt>({
+		content_type: "projekt",
+	});
+	projekte = entries.items
+		.map((item) => item.fields)
+		.sort((a, b) => (a.projektnummer ?? 0) - (b.projektnummer ?? 0));
+} catch (err) {
+	console.error("Error fetching Mitspielen projects:", err);
+}
+---
+
+<InfoLayout title="Mitspielen bei kommenden Projekten">
+	<h2>Mitspielen bei kommenden Projekten</h2>
+	<p>
+		Für die Zukunft planen wir bereits interessante neue Projekte.
+		Musiker*innen, die dabei mitspielen möchten, sind herzlich eingeladen, die
+		unten stehenden Links zur Anmeldung zu nutzen.
+	</p>
+	{
+		projekte.length === 0 ? (
+			<p>Momentan keine Mitspiel-Projekte veröffentlicht.</p>
+		) : (
+			projekte.map((projekt) => (
+				<section>
+					<h3>
+						Projekt {projekt.projektnummer}
+						{projekt.titel ? `: ${projekt.titel}` : ""}
+					</h3>
+					<h4>Termine</h4>
+					<p>{projekt.termine.replace(/\n/g, "<br />")}</p>
+					<h4>Programm</h4>
+					{projekt.programm &&
+						projekt.programm.map((item, index) => <p>{item}</p>)}
+					<p>
+						<Button href={projekt.anmeldungslink}>Anmelden</Button>
+						{projekt.anmeldeschluss &&
+							` (Anmeldeschluss: ${new Date(projekt.anmeldeschluss).toLocaleDateString("de-DE")})`}
+					</p>
+				</section>
+			))
+		)
+	}
+</InfoLayout>

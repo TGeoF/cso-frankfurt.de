@@ -16,3 +16,17 @@ export interface Konzert {
 	contentTypeId: "konzert";
 	fields: KonzertFields;
 }
+
+export interface ProjektFields {
+	projektnummer: Contentful.EntryFields.Integer;
+	titel?: Contentful.EntryFields.Symbol;
+	termine: Contentful.EntryFields.Text; // markdown or newline-separated list
+	programm?: Contentful.EntryFields.Symbol[];
+	anmeldungslink: Contentful.EntryFields.Symbol;
+	anmeldeschluss?: Contentful.EntryFields.Date;
+}
+
+export interface Projekt {
+	contentTypeId: "projekt";
+	fields: ProjektFields;
+}
