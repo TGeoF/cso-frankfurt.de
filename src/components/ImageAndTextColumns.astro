@@ -5,6 +5,7 @@ export interface Props {
 	src: string;
 	alt: string;
 	imageSide: "left" | "right";
+	contentHtml?: string;
 }
 ---
 
@@ -12,9 +13,7 @@ export interface Props {
 	{
 		Astro.props.imageSide === "right" && (
 			<div class="text">
-				<p>
-					<slot />
-				</p>
+				{image.contentHtml ? <div set:html={image.contentHtml} /> : <p><slot /></p>}
 			</div>
 		)
 	}
@@ -24,9 +23,7 @@ export interface Props {
 	{
 		Astro.props.imageSide === "left" && (
 			<div class="text">
-				<p>
-					<slot />
-				</p>
+				{image.contentHtml ? <div set:html={image.contentHtml} /> : <p><slot /></p>}
 			</div>
 		)
 	}

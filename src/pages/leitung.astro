@@ -4,12 +4,14 @@ import { Content as LocalTextContent } from "@posts/text_leitung.md";
 import ImageAndTextColumns from "@components/ImageAndTextColumns.astro";
 import { contentfulClient } from "@lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { marked } from "marked";
 
 const LEITUNG_ENTRY_ID = "1lYLhGHjOZbmgnIZE9LhCG";
 
 type TextEntryFields = Record<string, unknown>;
 
-let cmsTextHtml: string | null = null;
+let cmsFirstParagraphHtml: string | null = null;
+let cmsRemainingHtml: string | null = null;
 let cmsImageSrc: string | null = null;
 let cmsImageAlt: string | null = null;
 
@@ -44,9 +46,19 @@ try {
 	}
 
 	if (typeof text === "string") {
-		cmsTextHtml = text;
+		const paragraphs = text
+			.split(/\n\s*\n/)
+			.map((paragraph) => paragraph.replace(/\s*\n\s*/g, " ").trim())
+			.filter(Boolean);
+
+		if (paragraphs.length > 0) {
+			cmsFirstParagraphHtml = await marked.parse(paragraphs[0]);
+			if (paragraphs.length > 1) {
+				cmsRemainingHtml = await marked.parse(paragraphs.slice(1).join("\n\n"));
+			}
+		}
 	} else if (text && typeof text === "object" && "nodeType" in text) {
-		cmsTextHtml = documentToHtmlString(text as Parameters<typeof documentToHtmlString>[0]);
+		cmsRemainingHtml = documentToHtmlString(text as Parameters<typeof documentToHtmlString>[0]);
 	}
 } catch (error) {
 	console.error(`Error fetching Leitung entry ${LEITUNG_ENTRY_ID}:`, error);
@@ -59,16 +71,9 @@ try {
 		src={cmsImageSrc ?? "/images/lr.png"}
 		alt={cmsImageAlt ?? "Lukas Rommelspacher dirigiert das CSO."}
 		imageSide="left"
+		contentHtml={cmsFirstParagraphHtml ?? undefined}
 	>
-		<p>
-			Der Dirigent und Pianist Lukas Rommelspacher (*1992) ist seit der
-			Spielzeit 2018/2019 als Solorepetitor an der Oper Frankfurt tätig. Hier
-			gab er im April diesen Jahres mit <em>The Prodigal Son</em> und <em>
-				The Burning Fiery Furnace
-			</em> von Benjamin Britten sein Debut. In der Spielzeit 2023/2024 wird er zwei
-			Vorstellungen der Oper <em>Ascanio in Alba</em> von Wolfgang Amadeus Mozart
-			leiten.
-		</p>
+		{!cmsFirstParagraphHtml && <LocalTextContent />}
 	</ImageAndTextColumns>
-	{cmsTextHtml ? <div set:html={cmsTextHtml} /> : <LocalTextContent />}
+	{cmsRemainingHtml && <div set:html={cmsRemainingHtml} />}
 </Layout>
