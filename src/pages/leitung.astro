@@ -1,14 +1,63 @@
 ---
 import Layout from "@layouts/InfoLayout.astro";
-import { Content as TextContent } from "@posts/text_leitung.md";
+import { Content as LocalTextContent } from "@posts/text_leitung.md";
 import ImageAndTextColumns from "@components/ImageAndTextColumns.astro";
+import { contentfulClient } from "@lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+
+const LEITUNG_ENTRY_ID = "1lYLhGHjOZbmgnIZE9LhCG";
+
+type TextEntryFields = Record<string, unknown>;
+
+let cmsTextHtml: string | null = null;
+let cmsImageSrc: string | null = null;
+let cmsImageAlt: string | null = null;
+
+try {
+	const entry = await contentfulClient.getEntry<TextEntryFields>(LEITUNG_ENTRY_ID);
+	const fields = entry.fields;
+	const text = fields.inhalt ?? fields.text ?? fields.content ?? fields.body;
+	const bildField = Array.isArray(fields.bild) ? fields.bild[0] : fields.bild;
+	let imageFields:
+		| { file?: { url?: unknown }; title?: unknown; description?: unknown }
+		| undefined;
+
+	if (bildField && typeof bildField === "object") {
+		const linkedAsset = bildField as {
+			fields?: typeof imageFields;
+			sys?: { id?: string; linkType?: string };
+		};
+		imageFields = linkedAsset.fields;
+
+		if (!imageFields && linkedAsset.sys?.id && linkedAsset.sys.linkType === "Asset") {
+			const asset = await contentfulClient.getAsset(linkedAsset.sys.id);
+			imageFields = asset.fields;
+		}
+	}
+
+	const imageUrl = imageFields?.file?.url;
+
+	if (typeof imageUrl === "string") {
+		cmsImageSrc = imageUrl.startsWith("//") ? `https:${imageUrl}` : imageUrl;
+		const altText = imageFields.description ?? imageFields.title;
+		if (typeof altText === "string") cmsImageAlt = altText;
+	}
+
+	if (typeof text === "string") {
+		cmsTextHtml = text;
+	} else if (text && typeof text === "object" && "nodeType" in text) {
+		cmsTextHtml = documentToHtmlString(text as Parameters<typeof documentToHtmlString>[0]);
+	}
+} catch (error) {
+	console.error(`Error fetching Leitung entry ${LEITUNG_ENTRY_ID}:`, error);
+}
 ---
 
 <Layout title="Leitung">
 	<h2>Lukas Rommelspacher</h2>
 	<ImageAndTextColumns
-		src="/images/lr.png"
-		alt="Lukas Rommelspacher dirigiert das CSO."
+		src={cmsImageSrc ?? "/images/lr.png"}
+		alt={cmsImageAlt ?? "Lukas Rommelspacher dirigiert das CSO."}
 		imageSide="left"
 	>
 		<p>
@@ -21,5 +70,5 @@ import ImageAndTextColumns from "@components/ImageAndTextColumns.astro";
 			leiten.
 		</p>
 	</ImageAndTextColumns>
-	<TextContent />
+	{cmsTextHtml ? <div set:html={cmsTextHtml} /> : <LocalTextContent />}
 </Layout>
