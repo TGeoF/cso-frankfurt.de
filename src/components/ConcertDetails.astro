@@ -7,9 +7,10 @@ import ImageAndTextColumns from "./ImageAndTextColumns.astro";
 interface Props {
 	konzert: KonzertFields;
 	imageSide?: "left" | "right";
+	showTimes?: boolean;
 }
 
-const { konzert, imageSide } = Astro.props as Props;
+const { konzert, imageSide, showTimes = true } = Astro.props as Props;
 ---
 
 {
@@ -19,9 +20,9 @@ const { konzert, imageSide } = Astro.props as Props;
 			alt="Konzertflyer des CSO Frankfurt"
 			imageSide={imageSide ? imageSide : "right"}
 		>
-			<ConcertText konzert={konzert} />
+			<ConcertText konzert={konzert} showTimes={showTimes} />
 		</ImageAndTextColumns>
 	) : (
-		<ConcertText konzert={konzert} />
+		<ConcertText konzert={konzert} showTimes={showTimes} />
 	)
 }

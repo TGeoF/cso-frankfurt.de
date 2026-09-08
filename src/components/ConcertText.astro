@@ -5,22 +5,23 @@ import ConcertTime from "@components/ConcertTime.astro";
 
 import { Konzert, KonzertFields } from "@lib/types";
 
-const konzert = Astro.props.konzert;
-
 interface Props {
 	konzert: KonzertFields;
+	showTimes?: boolean;
 }
+
+const { konzert, showTimes = true } = Astro.props as Props;
 ---
 
 <div>
 	<h3 id="konzert-titel">{konzert.titel}</h3>
 	<p>
-		<ConcertTime datumUndUhrzeit={konzert.datumUhrzeit1} />
+		<ConcertTime datumUndUhrzeit={konzert.datumUhrzeit1} showTime={showTimes} />
 		{
 			konzert.datumUhrzeit2 && (
 				<>
 					<br />
-					<ConcertTime datumUndUhrzeit={konzert.datumUhrzeit2} />
+					<ConcertTime datumUndUhrzeit={konzert.datumUhrzeit2} showTime={showTimes} />
 				</>
 			)
 		}

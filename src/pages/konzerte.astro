@@ -64,9 +64,9 @@ try {
 				)
 				.map((konzert, i) =>
 					i % 2 === 1 ? (
-						<ConcertDetails konzert={konzert} imageSide="left" />
+						<ConcertDetails konzert={konzert} imageSide="left" showTimes={false} />
 					) : (
-						<ConcertDetails konzert={konzert} imageSide="right" />
+						<ConcertDetails konzert={konzert} imageSide="right" showTimes={false} />
 					)
 				)
 		) : (
