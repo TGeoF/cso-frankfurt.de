@@ -2,14 +2,36 @@
 import wochentag from "@lib/wochentag";
 
 interface Props {
-  datumUndUhrzeit: string;
+	datumUndUhrzeit: string;
 }
 
-const datumUndUhrzeit = new Date(Astro.props.datumUndUhrzeit);
+const rawDateTime = Astro.props.datumUndUhrzeit;
+const hasExplicitTimeZone = /(?:Z|[+-]\d{2}:\d{2})$/.test(rawDateTime);
+
+let weekday: string;
+let date: string;
+let time: string;
+
+if (hasExplicitTimeZone) {
+	const dateTime = new Date(rawDateTime);
+	weekday = new Intl.DateTimeFormat("de-DE", {
+		weekday: "long",
+		timeZone: "Europe/Berlin",
+	}).format(dateTime);
+	date = dateTime.toLocaleDateString("de-DE", { timeZone: "Europe/Berlin" });
+	time = dateTime.toLocaleTimeString("de-DE", {
+		timeStyle: "short",
+		timeZone: "Europe/Berlin",
+	});
+} else {
+	const [datePart, timePart] = rawDateTime.split("T");
+	const [year, month, day] = datePart.split("-").map(Number);
+	const calendarDate = new Date(Date.UTC(year, month - 1, day));
+
+	weekday = wochentag(calendarDate.getUTCDay());
+	date = calendarDate.toLocaleDateString("de-DE", { timeZone: "UTC" });
+	time = timePart.slice(0, 5);
+}
 ---
 
-<span
-  >{wochentag(datumUndUhrzeit.getDay())}, {
-    datumUndUhrzeit.toLocaleDateString("de")
-  }, {datumUndUhrzeit.toLocaleTimeString("de", { timeStyle: "short", timeZone: 'Europe/Berlin' })} Uhr
-</span>
+<span>{weekday}, {date}, {time} Uhr</span>
