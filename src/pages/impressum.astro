@@ -1,0 +1,40 @@
+---
+import Layout from "@layouts/InfoLayout.astro";
+import { contentfulClient } from "@lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { marked } from "marked";
+
+const IMPRESSUM_ENTRY_ID = "5ZEgCuBjMOVsJcq19BtH1b";
+
+type InfoTextFields = Record<string, unknown>;
+
+let heading = "Impressum";
+let cmsTextHtml: string | null = null;
+
+try {
+	const entry = await contentfulClient.getEntry<InfoTextFields>(IMPRESSUM_ENTRY_ID);
+	const name = entry.fields.name;
+	const text = entry.fields.inhalt;
+
+	if (typeof name === "string") heading = name;
+
+	if (typeof text === "string") {
+		cmsTextHtml = await marked.parse(text);
+	} else if (text && typeof text === "object" && "nodeType" in text) {
+		cmsTextHtml = documentToHtmlString(text as Parameters<typeof documentToHtmlString>[0]);
+	}
+} catch (error) {
+	console.error(`Error fetching Impressum entry ${IMPRESSUM_ENTRY_ID}:`, error);
+}
+---
+
+<Layout title={heading}>
+	<h2>{heading}</h2>
+	{
+		cmsTextHtml ? (
+			<div set:html={cmsTextHtml} />
+		) : (
+			<p>Die Informationen zum Impressum sind zurzeit nicht verfügbar.</p>
+		)
+	}
+</Layout>
