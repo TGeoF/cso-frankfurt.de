@@ -13,6 +13,9 @@ yarn-error.log*
 .env
 .env.production
 
+# Astro development-server metadata
+.astro/dev.json
+
 # macOS-specific files
 .DS_Store
 
