@@ -1,0 +1,91 @@
+---
+import Layout from "@layouts/InfoLayout.astro";
+import ImageAndTextColumns from "@components/ImageAndTextColumns.astro";
+import { contentfulClient } from "@lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { marked } from "marked";
+
+const JUGENDORCHESTER_ENTRY_ID = "lXtK8YEhvoE2hmXPVToGk";
+const fallbackText = "Informationen zum Jugendorchester folgen in Kürze.";
+
+type TextEntryFields = Record<string, unknown>;
+
+let cmsTextHtml: string | null = null;
+let cmsFirstParagraphHtml: string | null = null;
+let cmsRemainingHtml: string | null = null;
+let cmsImageSrc: string | null = null;
+let cmsImageAlt: string | null = null;
+
+try {
+	const entry = await contentfulClient.getEntry<TextEntryFields>(JUGENDORCHESTER_ENTRY_ID);
+	const fields = entry.fields;
+	const text = fields.inhalt ?? fields.text ?? fields.content ?? fields.body;
+	const bildField = Array.isArray(fields.bild) ? fields.bild[0] : fields.bild;
+	let imageFields:
+		| { file?: { url?: unknown }; title?: unknown; description?: unknown }
+		| undefined;
+
+	if (bildField && typeof bildField === "object") {
+		const linkedAsset = bildField as {
+			fields?: typeof imageFields;
+			sys?: { id?: string; linkType?: string };
+		};
+		imageFields = linkedAsset.fields;
+
+		if (!imageFields && linkedAsset.sys?.id && linkedAsset.sys.linkType === "Asset") {
+			const asset = await contentfulClient.getAsset(linkedAsset.sys.id);
+			imageFields = asset.fields;
+		}
+	}
+
+	const imageUrl = imageFields?.file?.url;
+	if (typeof imageUrl === "string") {
+		cmsImageSrc = imageUrl.startsWith("//") ? `https:${imageUrl}` : imageUrl;
+		const altText = imageFields.description ?? imageFields.title;
+		if (typeof altText === "string") cmsImageAlt = altText;
+	}
+
+	if (typeof text === "string") {
+		const paragraphs = text
+			.split(/\n\s*\n/)
+			.map((paragraph) => paragraph.replace(/\s*\n\s*/g, " ").trim())
+			.filter(Boolean);
+
+		if (cmsImageSrc && paragraphs.length > 0) {
+			cmsFirstParagraphHtml = await marked.parse(paragraphs[0]);
+			if (paragraphs.length > 1) {
+				cmsRemainingHtml = await marked.parse(paragraphs.slice(1).join("\n\n"));
+			}
+		} else {
+			cmsTextHtml = await marked.parse(text);
+		}
+	} else if (text && typeof text === "object" && "nodeType" in text) {
+		cmsTextHtml = documentToHtmlString(text as Parameters<typeof documentToHtmlString>[0]);
+	}
+} catch (error) {
+	console.error(`Error fetching Jugendorchester entry ${JUGENDORCHESTER_ENTRY_ID}:`, error);
+}
+---
+
+<Layout title="Jugendorchester">
+	<h2>Jugendorchester</h2>
+	{
+		cmsImageSrc ? (
+			<>
+				<ImageAndTextColumns
+					src={cmsImageSrc}
+					alt={cmsImageAlt ?? "Jugendorchester"}
+					imageSide="left"
+					contentHtml={cmsFirstParagraphHtml ?? undefined}
+				>
+					{!cmsFirstParagraphHtml && <p>{fallbackText}</p>}
+				</ImageAndTextColumns>
+				{cmsRemainingHtml && <div set:html={cmsRemainingHtml} />}
+			</>
+		) : cmsTextHtml ? (
+			<div set:html={cmsTextHtml} />
+		) : (
+			<p>{fallbackText}</p>
+		)
+	}
+</Layout>
