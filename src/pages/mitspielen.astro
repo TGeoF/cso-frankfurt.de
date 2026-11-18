@@ -2,6 +2,7 @@
 import InfoLayout from "../layouts/InfoLayout.astro";
 import { contentfulClient } from "@lib/contentful";
 import type { Projekt } from "@lib/types";
+import { marked } from "marked";
 
 import Button from "@components/Button.astro";
 
@@ -37,7 +38,7 @@ try {
 						{projekt.titel ? `: ${projekt.titel}` : ""}
 					</h3>
 					<h4>Termine</h4>
-					<p>{projekt.termine.replace(/\n/g, "<br />")}</p>
+					<div set:html={marked.parse(projekt.termine, { breaks: true, async: false })} />
 					<h4>Programm</h4>
 					{projekt.programm &&
 						projekt.programm.map((item, index) => <p>{item}</p>)}
